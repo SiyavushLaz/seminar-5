@@ -4,28 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Введите количество элементов в массиве: ");
-        int size = int.Parse(Console.ReadLine()); // ввод размера массива
+        double[] nums = { 3.4, 2.8, 7.2, 1.9, 5.6, 4.1 }; // создаем массив вещественных чисел
+        double max = nums[0]; // предполагаем, что первый элемент массива - максимальный
+        double min = nums[0]; // предполагаем, что первый элемент массива - минимальный
 
-        int[] nums = new int[size]; // создание массива заданного размера
-        Console.WriteLine($"Введите {size} элементов массива:");
-
-        // заполнение массива элементами, введенными пользователем
-        for (int i = 0; i < size; i++)
+        Console.WriteLine("Исходный массив:");
+        foreach (double num in nums)
         {
-            nums[i] = int.Parse(Console.ReadLine());
+            Console.Write($"{num} ");
+            if (num > max) max = num; // если текущий элемент больше максимального, то обновляем максимальный элемент
+            if (num < min) min = num; // если текущий элемент меньше минимального, то обновляем минимальный элемент
         }
 
-        // подсчет количества четных чисел в массиве
-        int evenCount = 0;
-        foreach (int num in nums)
-        {
-            if (num % 2 == 0)
-            {
-                evenCount++;
-            }
-        }
+        double diff = max - min; // находим разницу между максимальным и минимальным элементами
 
-        Console.WriteLine($"Количество четных чисел в массиве: {evenCount}.");
+        Console.WriteLine($"\nРазница между максимальным и минимальным элементами: {diff}");
     }
 }
+
