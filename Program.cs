@@ -4,28 +4,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Введите количество элементов в массиве: ");
-        int size = int.Parse(Console.ReadLine()); // ввод размера массива
+        int[] nums = new int[10]; // создаем массив с 10 элементами
+        Random rnd = new Random(); // создаем генератор случайных чисел
 
-        int[] nums = new int[size]; // создание массива заданного размера
-        Console.WriteLine($"Введите {size} элементов массива:");
-
-        // заполнение массива элементами, введенными пользователем
-        for (int i = 0; i < size; i++)
+        Console.WriteLine("Исходный массив:");
+        for (int i = 0; i < nums.Length; i++)
         {
-            nums[i] = int.Parse(Console.ReadLine());
+            nums[i] = rnd.Next(100); // заполняем массив случайными числами от 0 до 99
+            Console.Write($"{nums[i]} ");
         }
 
-        // подсчет количества четных чисел в массиве
-        int evenCount = 0;
-        foreach (int num in nums)
+        int sum = 0;
+        for (int i = 1; i < nums.Length; i += 2) // начинаем с 1, т.к. индексы массива начинаются с 0
         {
-            if (num % 2 == 0)
-            {
-                evenCount++;
-            }
+            sum += nums[i];
         }
 
-        Console.WriteLine($"Количество четных чисел в массиве: {evenCount}.");
+        Console.WriteLine($"\nСумма элементов на нечетных позициях: {sum}");
     }
 }
